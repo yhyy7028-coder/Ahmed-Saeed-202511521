@@ -1,30 +1,35 @@
-#include "student.h"
+#include "notepad.h"
 
 int main() {
-    vector<Student> students;
     int choice;
+    string filename;
 
     do {
-        cout << "\n====== Student Management System ======\n";
-        cout << "1. Add Student\n";
-        cout << "2. Display All Students\n";
-        cout << "3. Search Student by ID\n";
-        cout << "4. Update Student\n";
-        cout << "5. Delete Student\n";
-        cout << "6. Exit\n";
+        cout << endl;
+        cout << "===== SIMPLE NOTEPAD =====" << endl;
+        cout << "1. Write File" << endl;
+        cout << "2. Read File" << endl;
+        cout << "3. Append File" << endl;
+        cout << "4. Exit" << endl;
+        cout << "====" << endl;
         cout << "Enter choice: ";
         cin >> choice;
+        cin.ignore();
+
+        if (choice != 4) {
+            cout << "Enter filename: ";
+            getline(cin, filename);
+        }
 
         switch (choice) {
-            case 1: addStudent(students);      break;
-            case 2: displayStudents(students); break;
-            case 3: searchStudent(students);   break;
-            case 4: updateStudent(students);   break;
-            case 5: deleteStudent(students);   break;
-            case 6: cout << "Goodbye!\n";      break;
-            default: cout << "Invalid choice.\n";
+            case 1: writeFile(filename); break;
+            case 2: readFile(filename); break;
+            case 3: appendFile(filename); break;
+            case 4: cout << "Goodbye!" << endl; break;
+            default: cout << "Invalid choice." << endl;
         }
-    } while (choice != 6);
+
+    } while (choice != 4);
 
     return 0;
 }
